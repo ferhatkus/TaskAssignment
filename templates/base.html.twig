@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+    <title>{% block title %}TaskAssignment - Hoş Geldiniz{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+        .card, .alert {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand mr-auto mr-lg-0" href="#">TaskAssignment - Hoş Geldiniz</a>
+        </div>
+    </nav>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Developers List</h5>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th width="10%" scope="col">#</th>
+                        <th width="30%" scope="col">Developer</th>
+                        <th width="10%" scope="col" style="text-align: right;">Süre (Saat)</th>
+                        <th width="20%" scope="col" style="text-align: right;">Zorluk Seviyesi</th>
+                        <th width="30%" scope="col" style="text-align: right;">Yeni İş Top. Süre (Saat/ Gün)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if developers %}
+                        {%  for developer in developers %}
+                            <tr>
+                                <td>{{ developer.getId() }}</td>
+                                <td>{{ developer.getName() }}</td>
+                                <td align="right">{{ developer.getTime() }}</td>
+                                <td align="right">{{ developer.getDifficulty() }}</td>
+                                <td align="right">{{ developer.getTotalWorkTime() ~ " / " ~ developer.getTotalWorkDay() }}</td>
+                            </tr>
+                        {% endfor %}
+
+                    {% else %}
+                        <tr collspan="4">Developer Bulunamadı!</tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="alert alert-info" role="alert">
+        <b>Not:</b>
+        <ul>
+            <li>Developerların günde 9 Saat çalıştığı varsayılmıştır.</li>
+            <li>İş Dağılımında developer başına düşen işlerin saat bazlı toplam süreleri 9 a bölünerek verilen işlerin toplam gün değeri round edilerek bulunmuştur.</li>
+            <li>Developerların eş zamanlı çalıştığı varsayılarak, toplam iş süresi en fazla süren developerın gün değeri tüm işin toplam gün değerini belirlemiştir.</li>
+            <li>Verilen developer tablosuna göre bir developer 1 saatte zorluk alanındaki seviyeye ait işi bitirebildiği varsayılmıştır.</li>
+            <li>Developer tablosundaki 1 saatte yapılan işlerin zorluk seviyesine doğru orantılı bir şekilde iş dağılımı yapılmıştır. Örn: 1 saatte 5x seviye de bir işi bitiren developer 1x seviyedeki işi 1/5 saatte bitirmiş olarak varsayılmıştır.</li>
+            <li>İş Dağılımı işin zorluk seviyesi kolaydan (1), zora(5) doğru sıralanarak yapılmıştır. Sırayla DEV1 den başlayarak dağıtım yapılmıştır.</li>
+            <li>1 saatte tamamladığı iş seviyesi düşük olan developerlara daha az iş ataması yapılmıştır. Böylelikle seviyesinden büyük işlerde vakit kaybetmesi engellenmiş olup yerine işi daha hızlı yapabilecek developera verilmiştir.</li>
+        </ul>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">İş Listesi</h5>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th width="20%" scope="col">Developer</th>
+                        <th width="20%" scope="col">İş</th>
+                        <th width="20%" scope="col" style="text-align: right;">Tahmini Süre (Saat)</th>
+                        <th width="20%" scope="col" style="text-align: right;">Developer Süresi (Saat)</th>
+                        <th width="20%" scope="col" style="text-align: right;">Zorluk Seviyesi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if todolists %}
+                        {%  for todolist in todolists %}
+                            <tr>
+                                <td>{{ todolist.getAssignetDeveloper().getName() }}</td>
+                                <td>{{ todolist.getName() }}</td>
+                                <td align="right">{{ todolist.getEstimatedDuration() }}</td>
+                                <td align="right">{{ todolist.getTime() < 1 ? ((todolist.getTime() * 60) ~ "dk") : todolist.getTime()}}</td>
+                                <td align="right">{{ todolist.getLevel() }}</td>
+                            </tr>
+                        {% endfor %}
+
+                    {% else %}
+                        <tr collspan="4">İş Bulunamadı!</tr>
+                    {% endif %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td align="right" class="font-weight-bold">Toplam Süre:</td>
+                        <td align="right" class="font-weight-bold">{{ totaltime }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td align="right" class="font-weight-bold">Toplam Gün:</td>
+                        <td align="right" class="font-weight-bold">{{ maxWorkDay }}</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

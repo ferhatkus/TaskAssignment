@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/wamp64/www/TaskAssignment/config/services.yaml</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Model/Todolist/TodoListCover.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/templates/base.html.twig</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Command/AddToDoListCommand.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Entity/Developer.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/config/packages/twig.yaml</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/public/index.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/config/packages/routing.yaml</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Repository/TodolistRepository.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Migrations/Version20190909212312.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Model/Todolist/ToDoListJSONType2.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/config/bundles.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/config/packages/validator.yaml</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Repository/DeveloperRepository.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/config/routes/annotations.yaml</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/composer.lock</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Controller/DeveloperController.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Model/Todolist/ToDoListModel.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/config/bootstrap.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/config/routes.yaml</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Entity/Todolist.php</file>
+            <file>file:/C:/wamp64/www/TaskAssignment/src/Model/Todolist/ToDoListJSONType1.php</file>
+        </group>
+    </open-files>
+</project-private>
