@@ -6,9 +6,8 @@ use App\Model\Todolist\ToDoListJSONType1;
 use App\Model\Todolist\ToDoListJSONType2;
 
 /**
- * Description of TodoListCover
  *
- * @author Asus
+ * @author Ferhat KUS
  */
 class TodoListCover {
 

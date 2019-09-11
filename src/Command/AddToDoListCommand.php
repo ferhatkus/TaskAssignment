@@ -12,7 +12,7 @@ use App\Model\Todolist\TodoListCover;
 use Doctrine\DBAL\Connection;
 
 /**
- * Description of AddToDoListCommand
+ * Bu class console dan provider ile todoList çekip DB ye kaydetmek içindir.
  *
  * @author Ferhat KUS
  */

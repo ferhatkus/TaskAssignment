@@ -3,9 +3,8 @@
 namespace App\Model\Todolist;
 
 /**
- * Description of ToDoList
  *
- * @author Asus
+ * @author Ferhat KUS
  */
 abstract class ToDoListModel extends \App\Entity\Todolist {
 

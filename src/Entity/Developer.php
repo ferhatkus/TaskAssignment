@@ -53,6 +53,12 @@ class Developer {
         return $this->todoLists;
     }
 
+    /**
+     * Bu metod bir developerın kendi seviyesinden büyük
+     * atandığı işlerin sayısını verir.
+     * @param type $level
+     * @return \App\Entity\ınt
+     */
     public function getTodoListsCountBigFromLevel($level) {
         $cnt = 0;
         foreach ($this->todoLists as $todoList) {
@@ -64,6 +70,10 @@ class Developer {
         return $cnt;
     }
 
+    /**
+     * Bu metod developera verilen tüm işlerin toplam tamamlanma süresini verir.
+     * @return type
+     */
     public function getTotalWorkTime() {
         $totalTime = 0;
         foreach ($this->todoLists as $todoList) {
@@ -73,6 +83,10 @@ class Developer {
         return $totalTime;
     }
 
+    /**
+     * Bu metod developara verilen tüm işlerin toplam tamamlanma gün sayısını veir.
+     * @return type
+     */
     public function getTotalWorkDay() {
         $totalTime = $this->getTotalWorkTime();
         return round($totalTime / 9, 1);
@@ -94,19 +108,34 @@ class Developer {
         $this->todoLists[] = $todoList;
     }
 
+    /**
+     * Bu metod ile developera iş ataması yapılırken,
+     * mevcut iş yükü ve verilecek işin seviyesine göre
+     * işi yapıp yapamayacağı belirlenir.
+     * @param type $averageWork
+     * @param type $workLevel
+     * @return ınt|boolean
+     */
     public function canTakeWork($averageWork, $workLevel) {
+        //İşin seviyesi developerın 1 saatte yaptığı iş seviyesinden küçük mü?
         if ($workLevel < $this->difficulty) {
-            return 1;
+            return true;
         } else {
+            //İşin seviyesi developerın 1 saatte yaptığı iş seviyesinden büyük mü?
             if ($workLevel > $this->difficulty) {
+
+
+                //Developerlara iş dağılımı ve iş yükü eşit bir şekilde verilebilmesi için
+                //Developerın 1 saatte yaptığı iş seviyesinin üstünde işlerden
+                //kendi seviyesinin 3 katı kadar iş alabilir.
                 $x = $this->difficulty * 3;
                 if ($x > $this->getTodoListsCountBigFromLevel($this->difficulty)) {
 //                    if ($averageWork > count($this->todoLists)) {
-                    return 2;
+                    return true;
 //                    }
                 }
             } else {
-                return 3;
+                return true;
             }
 
             return false;
